@@ -15,7 +15,7 @@ int sunnybuilding(vector<int> &a)
             count++;
         }
     }
-return maxheight;
+return count;
 
 }
 
