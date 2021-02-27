@@ -2,7 +2,7 @@
 using namespace std;
 int next(vector<int> &a,int i)
 {
-   return (i+a[i]+a.size())%a.size();
+   return (i+a[i]+a.size())%a.size(); //not give negative elemement
 }
 
 bool  circularray(vector<int> &v,int n)
@@ -13,8 +13,8 @@ bool  circularray(vector<int> &v,int n)
         if(v[i]==0) continue;
 
         while (
-        v[slow]*v[next(v,slow)]>0 &&
-        v[fast]*v[next(v,fast)]>0 &&
+        v[slow]*v[next(v,slow)]>0 && // to check next value should not be negative
+        v[fast]*v[next(v,fast)]>0 &&  
         v[fast]*v[next(v,next(v,fast))]>0
         )
         {
@@ -31,6 +31,8 @@ bool  circularray(vector<int> &v,int n)
           }
 
         }
+
+        //assign zero to arry
           slow=i;
           int val=v[slow];
           while(val*v[slow]>0)
@@ -51,9 +53,9 @@ int main()
     {cin>>x; arr.push_back(x); }
     
     if(circularray(arr,n)) 
-       cout<<"Cycle present";
+       cout<<"1";
     else
-        cout<<"cycle is not prsent";   
+        cout<<"0";   
 
     return 0;
 }
